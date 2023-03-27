@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row col-12 col-md-6 m-auto mt-5 border  rounded p-5 bg-info-subtle ">
+         <h1 class="alert alert-success text-center">
+                Login
+            </h1>
+            <div class="row ">
+               <div class="col-12 text-danger">
+                 <h5 class="text-center">{{title}}</h5>
+               </div>
+            </div>
+            <form method="post" action="/checkLogin">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="row">
+                     <div class="col text-end">
+                    <a href="">Forgot Password?</a>
+                </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+              <div class="row m-auto">
+                  <button  type="submit" class="btn btn-primary ">Login</button>
+              </div>
+              <div class="row">
+                <div class="col text-center mt-2">
+                    <a href="/SingUp">Create an acount?</a>
+                </div>
+               
+              </div>
+            </form>
+    </div>
+</div>

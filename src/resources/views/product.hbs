@@ -1,0 +1,149 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="row">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Product</a></li>
+
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="row mt-3 m-auto  ">
+
+            <div class="col-12 col-lg-3 mt-1 ">
+                <input type="text" id="searchProduct" name="searchProduct" class="form-control"
+                    placeholder="Ten San Pham" aria-label="tenSP">
+            </div>
+            <div class="col-2 mt-1 ">
+                <button class="btn btn-secondary" type="submit">Search</button>
+            </div>
+        </div>
+        <div class="row m-auto" id="myProduct">
+            {{#each product}}
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                <div class="card mt-5" style="width: 18rem;">
+                    <div class="row text-end">
+                        <a href="" data-id="{{this._id}}" data-bs-toggle="modal"
+                            data-bs-target="#ModalEditProduct">Edit</a>
+                        <a href="" data-id="{{this._id}}" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Delete</a>
+                    </div>
+                    <img src="{{this.image}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text text-center">{{this.name}}</p>
+                        <p class="card-text text-center">Color : {{this.color}}</p>
+                        <p class="card-text text-center">Price : {{this.price}}</p>
+                        <div class="row">
+                            <a href="#" class="btn btn-primary ">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+    </div>
+
+    {{!-- modal update product --}}
+
+    <div class="modal fade" id="ModalEditProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Update product</h1>
+
+                </div>
+                <form method="post" name="formUpdateProduct">
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Name:</label>
+                            <input name="name" type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Color:</label>
+                            <input name="color" type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Price:</label>
+                            <input name="price" type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Image:</label>
+                            <input name="image" type="text" class="form-control" id="recipient-name">
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="btn_update" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{!-- Modal edit product --}}
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-danger" id="exampleModalLabel">Thong bao</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <b class="text-center">Ban co muon xoa san pham nay khong </b>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn_delete" type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form method="post" name="formDelete"></form>
+
+    <script>
+        const exampleModal = document.getElementById('ModalEditProduct')
+        exampleModal.addEventListener('show.bs.modal', event => {
+
+            const button = event.relatedTarget
+            const idProduct = button.getAttribute('data-id')
+            console.log('product/' + idProduct)
+            const formUpdateProduct = document.forms['formUpdateProduct']
+            const btn_update = document.getElementById('btn_update');
+            btn_update.onclick = function () {
+                formUpdateProduct.action = 'product/' + idProduct + '?_method=PUT'
+                formUpdateProduct.submit();
+            }
+        })
+
+        $(document).ready(function () {
+            $("#searchProduct").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myProduct div ").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+
+        const modalDelete = document.getElementById('exampleModal')
+        modalDelete.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget
+            const idProduct = button.getAttribute('data-id');
+            console.log(idProduct)
+            const formDelete = document.forms['formDelete'];
+            var btn_delete = document.getElementById('btn_delete');
+            btn_delete.onclick = function () {
+                formDelete.action = `/product/${idProduct}?_method=DELETE`
+                formDelete.submit();
+            }
+        })
+    </script>

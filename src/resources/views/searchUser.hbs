@@ -13,15 +13,13 @@
     <div class="row mt-3   ">
 
         <form action="/search" method="get">
-           <div class="row">
-             <div class="col-12 col-sm-8 col-lg-8 col-xl-8 mt-1 ">
+            <div class="col-12 col-sm-8 col-lg-8 col-xl-8 mt-1 ">
                 <input type="text"  name="lastname" id="lastname" class="form-control" placeholder="Search..."
                     aria-label="Last name">
             </div>
-            <div class="col-2 col-sm-4 col-lg-4 col-xl-4 mt-1 ">
+            <div class="col-2 col-sm-4 col-lg-4 col-xl-4 mt-1 m-auto">
                 <button class="btn btn-secondary" type="submit">Search</button>
             </div>
-           </div>
         </form>
 
     </div>
@@ -132,7 +130,7 @@
         renderPagin.innerHTML = renderPagin.innerHTML + `
          <nav aria-label="Page navigation example">
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="/user?page=${i}">${i}</a></li>
+                <li class="page-item"><a class="page-link" href="/search?lastname={{lastname}}&page=${i}">${i}</a></li>
             </ul>
         </nav>`
     }

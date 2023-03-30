@@ -2,12 +2,15 @@ const Product = require("../models/Product");
 class ProductController {
   // [GET] /prodcut
   product(req, res, next) {
+
     Product.find({}).then((product) => {
       product = product.map((product) => product.toObject());
+      
       res.render("product", {
         showHeader: true,
         product,
       });
+      
     });
   }
   // [GET] /product/addProduct

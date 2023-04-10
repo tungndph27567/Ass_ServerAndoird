@@ -1,4 +1,4 @@
-<nav class="navbar bg-primary bg-opacity-25 navbar-expand-lg ">
+<nav class="navbar bg-primary bg-opacity-25 navbar-expand-lg shadow p-3 mb-5 bg-body-tertiary rounded ">
   <div class="container-fluid">
     <a class="navbar-brand" href="">Manager Shop</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -10,8 +10,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="">Home</a>
         </li>
-
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" id="dropUser" >
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Users
           </a>
@@ -30,7 +29,22 @@
             <li><a class="dropdown-item" href="/product/addProduct">Add Prouct</a></li>
           </ul>
         </li>
+        <div class="offcanvas-body">
+          <div class="d-flex">
+            <a href="/logout" class="btn btn-outline-success" type="submit">Log out</a>
+          </div>
+        </div>
+
       </ul>
     </div>
   </div>
 </nav>
+
+<script>
+  var roleUser = "{{roleUser}}";
+  let dropUser = document.getElementById('dropUser');
+
+  if (roleUser == 'user') {
+    dropUser.hidden = true;
+  }
+</script>

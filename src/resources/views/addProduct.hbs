@@ -11,24 +11,26 @@
             </nav>
         </div>
     </div>
-    <form method="post" action="/product/list">
+    <form method="post" action="/product/list" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="" class="form-label">Ten San Pham</label>
             <input type="text" name="name" class="form-control" id="nameSP" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Color</label>
-            <input  type="text" name="price" class="form-control" id="colorSP" required>
+            <input type="text" name="price" class="form-control" id="colorSP" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Price</label>
             <input type="text" name="color" class="form-control" id="priceSP" required>
         </div>
-        <div class="mb-3">
-            <label class="form-label">Image</label>
-            <input type="text" name="image" class="form-control" id="img" required>
+        
+        <div class="form-group">
+            <label for="">image</label>
+            <input id="" class="form-control" type="file" name="image">
+            <input type="hidden"value="{{pro.image}}" ></input>
         </div>
 
-        <button type="submit" class="btn btn-primary">ADD</button>
+        <button type="submit" class="btn btn-primary mt-3">ADD</button>
     </form>
 </div>

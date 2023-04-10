@@ -32,7 +32,7 @@
                         <a href="" data-id="{{this._id}}" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">Delete</a>
                     </div>
-                    <img src="{{this.image}}" class="card-img-top" alt="...">
+                    <img src="images/products/{{this.image}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <p class="card-text text-center">{{this.name}}</p>
                         <p class="card-text text-center">Color : {{this.color}}</p>
@@ -59,7 +59,6 @@
                 </div>
                 <form method="post" name="formUpdateProduct">
                     <div class="modal-body">
-
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Name:</label>
                             <input name="name" type="text" class="form-control" id="recipient-name">
@@ -72,12 +71,11 @@
                             <label for="recipient-name" class="col-form-label">Price:</label>
                             <input name="price" type="text" class="form-control" id="recipient-name">
                         </div>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Image:</label>
-                            <input name="image" type="text" class="form-control" id="recipient-name">
+                        <div class="form-group">
+                            <label for="">image</label>
+                            <input id="" class="form-control" type="file" name="image">
+                            <input type="hidden" value="{{pro.image}}"></input>
                         </div>
-
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -112,6 +110,7 @@
     <form method="post" name="formDelete"></form>
 
     <script>
+
         const exampleModal = document.getElementById('ModalEditProduct')
         exampleModal.addEventListener('show.bs.modal', event => {
 
@@ -124,7 +123,6 @@
                 formUpdateProduct.action = 'product/' + idProduct + '?_method=PUT'
                 formUpdateProduct.submit();
             }
-
         })
 
         $(document).ready(function () {
@@ -148,8 +146,4 @@
                 formDelete.submit();
             }
         })
-
-
-
-
     </script>

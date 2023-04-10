@@ -4,9 +4,11 @@
                 Login
             </h1>
             <div class="row ">
+                {{#if msg}}
                <div class="col-12 text-danger">
-                 <h5 class="text-center">{{title}}</h5>
+                 <h5 class="text-center">{{msg}}</h5>
                </div>
+                {{/if}}
             </div>
             <form method="post" action="/checkLogin">
                 <div class="mb-3">

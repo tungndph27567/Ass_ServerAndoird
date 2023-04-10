@@ -1,38 +1,46 @@
 <div class="container">
-    <div class="row col-12 col-md-4 m-auto mt-5 border border-success p-5 mt-5">
-         <h1 class="alert alert-success text-center">
-                Sing Up
-            </h1>
-            <form method="post" action="/list">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required >
-                </div>
-              <div class="row">
+    <div class="row col-12 col-md-5 m-auto  border border-success p-5 mt-3">
+        <h1 class="alert alert-success text-center">
+            Sing Up
+        </h1>
+        {{#if msg}}
+        <p style="height: 15;" class="bg-danger bg-opacity-25 text-danger text-center ">{{msg}}</p>
+        {{/if}}
+        <form method="post" action="/list">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" required>
+            </div>
+            <div class="row">
                 <div class="col">
-                     <div class="mb-3">
-                    <label  class="form-label">Firt Name</label>
-                    <input type="text" name="firstname" class="form-control" id="exampleInputPassword1" required>
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label">Firt Name</label>
+                        <input type="text" name="firstname" class="form-control" id="exampleInputPassword1" required>
+                    </div>
                 </div>
                 <div class="col">
-                     <div class="mb-3">
-                    <label class="form-label">Last name</label>
-                    <input type="text" name="lastname" class="form-control" id="exampleInputPassword1">
+                    <div class="mb-3">
+                        <label class="form-label">Last name</label>
+                        <input type="text" name="lastname" class="form-control" id="exampleInputPassword1">
+                    </div>
                 </div>
-                </div>
-               </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1"  class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-                </div>
-              <div class="row m-auto">
-                  <button id="btn_singup" type="submit" class="btn btn-primary ">Sing Up</button>
-              </div>
-              <div class="row">
-               
-               
-              </div>
-            </form>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+                <input type="password" name="password2" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="row m-auto">
+                <button id="btn_singup" type="submit" class="btn btn-primary ">Sing Up</button>
+            </div>
+            <div class="row">
+
+
+            </div>
+        </form>
     </div>
 </div>
